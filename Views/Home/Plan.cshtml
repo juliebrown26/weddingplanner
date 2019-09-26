@@ -1,0 +1,39 @@
+@model Wedding
+<div class="container">
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-sm-8">
+            <h1>Plan your Wedding</h1>
+        </div>
+        <div class="col-sm-2">
+            <a href="/dashboard">Dashboard</a>
+        </div>
+        <div class="col-sm-2">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="row">
+        <form asp-action="CreateWedding" asp-controller="Home" method="post">
+            <div class="form-group">
+                <span asp-validation-for="PartnerOne"></span><br>
+                <label asp-for="PartnerOne"></label>
+                <input class="form-control" asp-for="PartnerOne">
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="PartnerTwo"></span><br>
+                <label asp-for="PartnerTwo"></label>
+                <input class="form-control" asp-for="PartnerTwo">
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="WeddingDate"></span><br>
+                <label asp-for="WeddingDate"></label>
+                <input class="form-control" asp-for="WeddingDate">
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="Address"></span><br>
+                <label asp-for="Address"></label>
+                <input class="form-control" asp-for="Address">
+            </div>
+            <button class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</div>

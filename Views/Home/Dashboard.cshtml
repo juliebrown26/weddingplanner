@@ -1,0 +1,41 @@
+@model DashboardViewModel
+<div class="container">
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-sm-10">
+            <h1>Welcome to the Wedding Planner</h1>
+        </div>
+        <div class="col-sm-2">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <th>Wedding</th>
+                <th>Date</th>
+                <th>Guest</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+            @foreach(Wedding item in Model.Weddings)
+            {
+                <tr>
+                    <td><a href="/details/@item.WeddingId">@item.PartnerOne & @item.PartnerTwo</a></td>
+                    <td>@item.WeddingDate</td>
+                    <td># of Guests</td>
+                    <td>
+                        <form asp-action="AddRSVP" asp-controller="Home" method="post">
+                            <input hidden asp-for="Rsvp.UserId" value="@Model.User.UserId">
+                            <input hidden asp-for="Rsvp.WeddingId" value="@item.WeddingId">
+                            <button type="submit" class="btn btn-caution">RSVP</button>
+                        </form>
+                    </td>
+                </tr>
+            }    
+            </tbody>
+        </table>
+    </div>
+    <div class="row" style="justify-content: flex-end;">
+        <a class="btn btn-info" href="/plan" role="button">New Wedding</a>
+    </div>
+</div>

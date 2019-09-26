@@ -1,0 +1,31 @@
+@model DetailsViewModel
+<div class="container">
+    <div class="row" style="margin: 30px;">
+        <div class="col-sm-8">
+            <h1>@Model.Wedding.PartnerOne & @Model.Wedding.PartnerTwo's Wedding</h1>
+        </div>
+        <div class="col-sm-2">
+            <a href="/dashboard">Dashboard</a>
+        </div>
+        <div class="col-sm-2">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="row" style="margin: 30px;">
+        <h2>@Model.Wedding.WeddingDate</h2>
+    </div>
+    <div class="row" style="margin: 30px;">
+        <div class="col">
+            <h2>Guests:</h2>
+            <ul>
+            @foreach(Rsvp item in Model.Wedding.Rsvps)
+            {
+                <li>@item.User.FirstName @item.User.LastName</li>
+            }
+            </ul>
+        </div>
+        <div class="col">
+            <h2>map goes here</h2>
+        </div>
+    </div>
+</div>
